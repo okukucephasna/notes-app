@@ -2,6 +2,7 @@ from flask import Flask, send_from_directory
 from flask_restful import Api
 from signup import SignUp
 from signin import SignIn
+from initdb import init_db
 from api import Notes, Note
 from flask_cors import CORS
 import os
@@ -15,6 +16,7 @@ app = Flask(__name__, static_folder=FRONTEND_BUILD_PATH, static_url_path="")
 CORS(app, supports_credentials=True, resources={r"/*": {"origins": "*"}})
 
 api = Api(app)
+init_db()  # <--- make sure this runs at startup
 
 # API routes
 api.add_resource(SignUp, "/signup")
@@ -33,4 +35,5 @@ def serve_react(path=""):
         return send_from_directory(FRONTEND_BUILD_PATH, "index.html")
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)
+

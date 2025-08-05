@@ -10,7 +10,7 @@ export default function Signin() {
     const handleSignin = async () => {
         try {
             const res = await axios.post("http://localhost:5000/signin", { email, password });
-            if (res && res.data && res.data.message) {
+            if (res?.data?.message) {
                 alert(res.data.message);
                 localStorage.setItem("user", res.data.email);
                 navigate("/dashboard");
@@ -18,7 +18,7 @@ export default function Signin() {
                 alert("Unexpected response from server.");
             }
         } catch (err) {
-            if (err.response && err.response.data && err.response.data.message) {
+            if (err.response?.data?.message) {
                 alert(err.response.data.message);
             } else if (err.request) {
                 alert("No response from server. Check if it's running and CORS is configured.");
@@ -29,26 +29,45 @@ export default function Signin() {
     };
 
     return (
-        <div className="d-flex justify-content-center align-items-center vh-100 bg-light">
-            <div className="card shadow p-4" style={{ width: '100%', maxWidth: '400px' }}>
-                <h3 className="text-center mb-4">Sign In</h3>
-                <input
-                    type="email"
-                    className="form-control mb-3"
-                    placeholder="Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-                <input
-                    type="password"
-                    className="form-control mb-3"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-                <button className="btn btn-primary w-100 mb-2" onClick={handleSignin}>Sign In</button>
+        <div className="d-flex justify-content-center align-items-center vh-100 bg-gradient bg-light">
+            <div className="card shadow-lg p-4 border-0" style={{ width: '100%', maxWidth: '420px' }}>
+                <div className="text-center mb-4">
+                    <h2 className="fw-bold">Welcome Back</h2>
+                    <p className="text-muted">Sign in to continue to Focus Notes</p>
+                </div>
+
+                <div className="mb-3">
+                    <label className="form-label">Email address</label>
+                    <input
+                        type="email"
+                        className="form-control"
+                        placeholder="Enter your email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                    />
+                </div>
+
+                <div className="mb-3">
+                    <label className="form-label">Password</label>
+                    <input
+                        type="password"
+                        className="form-control"
+                        placeholder="Enter your password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
+                </div>
+
+                <div className="d-grid mb-3">
+                    <button className="btn btn-primary btn-lg" onClick={handleSignin}>
+                        Sign In
+                    </button>
+                </div>
+
                 <p className="text-center small">
-                    Don't have an account? <Link to="/signup">Sign Up</Link>
+                    Don’t have an account? <Link to="/signup">Create one</Link>
                 </p>
             </div>
         </div>
