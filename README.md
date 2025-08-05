@@ -1,8 +1,3 @@
-Here’s a **human-sounding README** for your full-stack Dockerized Notes App project. It's well-structured, includes sections for screenshots, and explains both the frontend and backend clearly.
-
----
-
-````markdown
 # 📝 Focus Notes App
 
 Focus Notes is a simple full-stack web application built with **React** (frontend) and **Flask** (backend), containerized using **Docker**. It allows users to **sign up**, **log in**, and **create, edit, or delete personal notes**. Everything is securely stored in a **MySQL database**, and the app is designed to be lightweight and easy to deploy.
