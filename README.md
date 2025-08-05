@@ -35,9 +35,9 @@ docker-compose up --build
 
 ---
 
-## 🖼️ Screenshots
+## 🖼️ Screenshots of the various sections of the project
 
-> Add your screenshots here (e.g., login screen, dashboard, note modal)
+
 ![docker interface](https://github.com/user-attachments/assets/57585598-9f58-47de-93d8-43600aa91b54)
 🐳 Docker Desktop: Running Containers
 Screenshot 1: Docker Desktop Interface
